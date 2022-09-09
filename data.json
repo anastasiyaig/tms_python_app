@@ -1,0 +1,25 @@
+[
+    {
+        "cpu_current": 2400,
+        "cpu_min": 2400,
+        "cpu_max": 2400,
+        "cpu_count": 8
+    },
+    {
+        "disk_total_space": 228.27,
+        "disk_space_used": 174.43,
+        "disk_space_free": 53.85,
+        "disk_used_percentage": 76.4,
+        "disk_read_count": 38942353,
+        "disk_write_count": 17758603,
+        "disk_read_bytes": 1014.58,
+        "disk_write_bytes": 846.77,
+        "disk_read_time": 319,
+        "disk_write_time": 13
+    },
+    {
+        "battery_power_left": 63,
+        "seconds_left_to_discharge": 299,
+        "cable_connected": "False"
+    }
+]

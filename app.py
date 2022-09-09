@@ -1,7 +1,27 @@
+import functools
+import json
+
 import psutil
 import fontstyle
 
+results = []
 
+
+def data_to_file(filename):
+    def decorator(function_to_decorate):
+        @functools.wraps(function_to_decorate)
+        def wrapper():
+            results.append(function_to_decorate())
+            with open(filename, 'w') as file:
+                json.dump(results, file, indent=4)
+            return function_to_decorate()
+
+        return wrapper
+
+    return decorator
+
+
+@data_to_file(filename="data.json")
 def cpu_data():
     res = {}
     # CPU frequency as a named tuple including current, min and max frequencies in Mhz
@@ -12,6 +32,7 @@ def cpu_data():
     return res
 
 
+@data_to_file(filename="data.json")
 def disks_data():
     res = {}
     # Return disk usage statistics about the partition which contains the given path as a named tuple including total,
@@ -35,6 +56,7 @@ def disks_data():
     return res
 
 
+@data_to_file(filename="data.json")
 def sensors_data():
     res = {}
     # Return battery status information. If no battery is installed or metrics can’t be determined None is returned.
